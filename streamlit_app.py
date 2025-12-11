@@ -5,6 +5,7 @@ st.title('Penguin Identifier')
 
 st.info('This is a machine learning app')
 
+# Show Raw Data
 with st.expander("Data"):
   st.write("**Raw Data**")
   df = pd.read_csv("https://raw.githubusercontent.com/dataprofessor/data/master/penguins_cleaned.csv")
@@ -17,3 +18,8 @@ with st.expander("Data"):
   st.write("**y**")
   y= df.species
   y
+
+# Show Visual Chart
+
+with st.expander('Data visualization'):
+  st.scatter_chart(data=df, x='bill_length_mm', y='body_mass_g', color='species')
