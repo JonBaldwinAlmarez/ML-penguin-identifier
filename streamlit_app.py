@@ -93,6 +93,10 @@ clf.fit(X, y)    #  Train the ML model
 
 prediction = clf.predict(input_row)
 prediction_proba = clf.predict_proba(input_row)
-prediction_proba
+
+df_prediction_proba = pd.Dataframe(prediction_proba)
+df_prediction_proba.columns = ["Adelie","Chinstrip","Gentoo"]
+df_prediction_proba.rename(columns = {0: "Adelie", 1:"Chinstrip", 2:"Gentoo"})
+df_prediction_proba
 
 
