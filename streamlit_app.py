@@ -12,12 +12,12 @@ with st.expander("Data"):
   df
   
   st.write("**X**")
-  X = df.drop("species", axis=1)
-  X
+  X_raw = df.drop("species", axis=1)
+  X_raw
 
   st.write("**y**")
-  y= df.species
-  y
+  Y_raw = df.species
+  Y_raw
 
 # Show Visual Chart
 
@@ -48,19 +48,27 @@ with st.sidebar:
   }
 
   input_df = pd.DataFrame(data, index=[0])
-  input_penguins = pd.concat([input_df, X], axis=0)
+  input_penguins = pd.concat([input_df, X_raw], axis=0)
 
-    # Encode
+# Encode X
   
-  encode = ["island", "sex"]
-  df_penguins = pd.get_dummies(input_penguins, prefix=encode)
-  input_row = df_penguins[:1] # Show only first row
+encode = ["island", "sex"]
+df_penguins = pd.get_dummies(input_penguins, prefix=encode)
+input_row = df_penguins[:1] # Show only first row
 
+  # Encode Y
+target_mapper = {"Adelle": 0,
+                "Chinstrap": 1,
+                 "Gentoo": 2,
+                }
+
+def targer_encode(val):
+  return target_mapper[val]
 
 with st.expander("Input Features"):
   st.write("**Input Penguin**")
   input_df
   st.write("**Combined Penguins Data**")
   input_penguins
-  st.write("Encoded input penguin")
+  st.write("**Encoded input penguin**")
   input_row
