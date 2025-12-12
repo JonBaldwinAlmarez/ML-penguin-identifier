@@ -93,3 +93,6 @@ clf.fit(X, y)    #  Train the ML model
 
 prediction = clf.predict(input_row)
 prediction_proba = clf.predict_proba(input_row)
+prediction_proba
+
+
