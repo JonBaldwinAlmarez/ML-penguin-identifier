@@ -65,6 +65,8 @@ target_mapper = {"Adelle": 0,
 def targer_encode(val):
   return target_mapper[val]
 
+y = Y_raw.apply(target_encode)
+
 with st.expander("Input Features"):
   st.write("**Input Penguin**")
   input_df
