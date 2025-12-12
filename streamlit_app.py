@@ -40,7 +40,7 @@ with st.sidebar:
 
   data = {
     "island": island,
-    "gender": gender,
+    "sex": gender,
     "bill_length": bill_length,
     "bill_depth": bill_depth,
     "flipper_lenght": flipper_lenght,
@@ -55,3 +55,8 @@ with st.expander("Input Features"):
   input_df
   st.write("**Combined Penguins Data**")
   input_penguins
+
+# Encode
+
+encode = ["island", "sex"]
+df_penguins = pd.get_dummies(input_penguins, prefix=encode)
