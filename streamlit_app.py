@@ -57,7 +57,7 @@ df_penguins = pd.get_dummies(input_penguins, prefix=encode)
 input_row = df_penguins[:1] # Show only first row
 
   # Encode Y
-target_mapper = {"Adelle": 0,
+target_mapper = {"Adelie": 0,
                 "Chinstrap": 1,
                  "Gentoo": 2,
                 }
