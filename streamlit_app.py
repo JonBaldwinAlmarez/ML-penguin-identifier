@@ -20,12 +20,10 @@ with st.expander("Data"):
   Y_raw
 
 # Show Visual Chart
-
 with st.expander('Data visualization'):
   st.scatter_chart(data=df, x='bill_length_mm', y='body_mass_g', color='species')
 
-# Data Preparation
-# "species","island","bill_length_mm","bill_depth_mm","flipper_length_mm","body_mass_g","sex"
+# Input Features
 
 with st.sidebar:
   st.header("Input Features")
@@ -50,8 +48,17 @@ with st.sidebar:
   input_df = pd.DataFrame(data, index=[0])
   input_penguins = pd.concat([input_df, X_raw], axis=0)
 
-# Encode X
-  
+# Input
+with st.expander("Input Features"):
+  st.write("**Input Penguin**")
+  input_df
+  st.write("**Combined Penguins Data**")
+  input_penguins
+  st.write("**Encoded input penguin**")
+  input_row
+
+# Data preparation
+# Encode X 
 encode = ["island", "sex"]
 df_penguins = pd.get_dummies(input_penguins, prefix=encode)
 input_row = df_penguins[:1] # Show only first row
@@ -66,12 +73,11 @@ def target_encode(val):
   return target_mapper[val]
 
 y = Y_raw.apply(target_encode)
-Y_raw
 
-with st.expander("Input Features"):
-  st.write("**Input Penguin**")
-  input_df
-  st.write("**Combined Penguins Data**")
-  input_penguins
-  st.write("**Encoded input penguin**")
+
+with st.expander("Data Preperation"):
+  st.write("**Encode Input Penguins (X)**")
   input_row
+  st.write("**Encode Input Penguins (Y)**")
+  input_row
+  y
