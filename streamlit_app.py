@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+from sklearn.ensemble import RandomForestClassifier
 
 st.title('Penguin Identifier')
 
@@ -58,7 +59,7 @@ with st.expander("Input Features"):
 # Data preparation
 # Encode X 
 encode = ["island", "sex"]
-df_penguins = pd.get_dummies(input_penguins, prefix=encode)
+df_penguins = pd.get_dummies(input_penguins, prefix=encode) # Encoded version
 
 X = df_penguins[1:]
 input_row = df_penguins[:1] # Show only first row
@@ -81,3 +82,14 @@ with st.expander("Data Preperation"):
   input_row
   st.write("**Encode Input Penguins (Y)**")
   y
+
+
+# Model Training and Inference
+
+clf = RandomForestClassifier()
+clf.fit(X,y)    #  Train the ML model
+
+# Apply model to make predictions
+
+prediction = clf.predict(input_row)
+prediction_proba = clf.predict_proba(input_row)
