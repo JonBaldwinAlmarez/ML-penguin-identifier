@@ -52,10 +52,8 @@ with st.sidebar:
 with st.expander("Input Features"):
   st.write("**Input Penguin**")
   input_df
-  st.write("**Combined Penguins Data**")
-  input_penguins
   st.write("**Encoded input penguin**")
-  input_row
+  input_penguins
 
 # Data preparation
 # Encode X 
