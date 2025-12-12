@@ -79,5 +79,4 @@ with st.expander("Data Preperation"):
   st.write("**Encode Input Penguins (X)**")
   input_row
   st.write("**Encode Input Penguins (Y)**")
-  input_row
   y
